@@ -31,11 +31,13 @@ h1 {
   font-size: 24px;
   border: 1px solid #222;
   padding: 5px;
+  cursor: pointer;
 }
 .categories {
   margin: 0 1rem;
 }
 
+/* list */
 .list-container {
   border: 2px solid #fff;
   max-width: 100%;
@@ -44,15 +46,28 @@ h1 {
   justify-content: center;
   margin: 2rem 5rem;
 }
+.lists {
+  border: 2px solid #fff;
+  width: 100%;
+  margin: 1rem 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .list {
   width: 60%;
   border: 1px solid #222;
   height: 35px;
   background: #fff;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin: 3px;
+  text-align: center;
+  align-items: center;
 }
-
+.list p {
+  margin: 0.5rem;
+}
 .delete-btn,
 .check-btn {
   border: 1px solid #222;
@@ -61,6 +76,7 @@ h1 {
   color: #fff;
   font-size: 16px;
   margin: 1px;
+  cursor: pointer;
 }
 .check-btn {
   background-color: rgb(100, 187, 19);
