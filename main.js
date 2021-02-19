@@ -24,15 +24,44 @@ addBtn.addEventListener('click', (e) => {
     lists.appendChild(list);
 
 
-    let checkBtn = document.getElementById('check-btn');
-    let deleteBtn = document.getElementById('delete-btn');
+      
    
-    check(checkBtn);
-    //deleteBtn.addEventListener('click', () => {
-        //let list = document.querySelector('.list > p');
-        //list.style.
-    //})
-    });
+   
+
+let checkBtn = document.querySelectorAll('.check-btn');
+let deleteBtn = document.querySelectorAll('.delete-btn');
+  
+
+ 
+
+    function dount(){
+       let list = document.querySelectorAll('.list');
+        list.forEach(function(e) {
+        e.addEventListener('click', () => {
+             e.style.textDecoration = 'line-through';      
+        })  
+    })    
+  
+    }
+  
+ checkBtn.forEach(dount);
+  deleteBtn.forEach(waffle);
+
+    function waffle(){
+        let list = document.querySelectorAll('.list');
+        list.forEach(function(i) {
+        i.addEventListener('click', () => {
+             i.style.display = 'none';      
+        })  
+    })    
+    }
+
+  
+  
+  
+  });
+    
+  
 
 
 }
@@ -41,16 +70,28 @@ addBtn.addEventListener('click', (e) => {
     
  //check button
 function check(e){
-     
         let list = document.querySelectorAll('.list');
         list.forEach(function(e) {
         e.addEventListener('click', () => {
-        e.style.textDecoration = 'line-through';
-        console.log(list);
+             e.style.textDecoration = 'line-through'; 
+             console.log(list);
         })
        
     })
 }
   
+//delete button
+function deleted(){
+    let list = document.querySelectorAll('.list');
+    list.forEach(function(i){
+        i.addEventListener('click', () => {
+           
+        })
+    })
+}
+
+
+
+
 
 main();
