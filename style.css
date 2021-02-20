@@ -84,3 +84,16 @@ h1 {
 .delete-btn {
   background-color: rgb(185, 45, 45);
 }
+
+/* completed items */
+.completedItem {
+  text-decoration: line-through;
+  opacity: 0.5;
+  transform: scale(0.96);
+}
+
+/* delete the task */
+.fall {
+  transform: translateY(4em) scale(0.4) rotate(20deg);
+  opacity: 0;
+}
