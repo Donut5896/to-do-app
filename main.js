@@ -4,31 +4,11 @@ const lists = document.getElementById('lists');
 
 
 
-//delete and check functionality
-function deleteItem(e){
-    const item = e.target;
-     console.log(item);
-    //delete items
-    if(item.classList[0] === "delete-btn"){
-        const todo = item.parentElement.parentElement;
-        todo.classList.add("fall");
-        todo.addEventListener('transitionend', function() {
-            todo.remove;
-        })
-        console.log(item.classList[0]);
-    }
-    //checked items
-    if(item.classList[0] === "check-btn"){
-        const todo = item.parentElement.parentElement;
-        todo.classList.toggle("completedItem")
-          console.log(todo);
-    }
-}
 
 
 
 // create lists with delete and check buttons
-function addTodo(event){
+/*function addTodo(event){
     event.preventDefault();
     // todo li
     const todoLi = document.createElement('li');
@@ -61,81 +41,94 @@ function addTodo(event){
     inputBar.value = "";
 }
 
-
-
-
-
-//event listeners
-addBtn.addEventListener('click', addTodo);
-lists.addEventListener('click', deleteItem);
+*/
 
 
 
 
 
+//classes names
+const CHECK = "fa-check-circle";
+const UNCHECK = "fa-circle-thin";
+const LINE_THROUGH = "lineThrough";
 
-/*function createListItem(event){
-    //let inputList = inputBar.value;
 
-    let list = document.createElement('li');
-    list.classList.add("list")
-    const attr = document.createAttribute('data-id');
-    attr.value = id;
-    list.setAttributeNode(attr);
-    list.innerHTML = `
-                        <p>${value}</p>
+//variable
+let LIST = [];
+let id = 0;
+
+
+function createListItem( toDo, id, done, trash){
+    
+    if(trash){return}
+    const DONE = done? CHECK : UNCHECK;
+    const LINE = done? LINE_THROUGH : "";
+    
+    const item = `<li class="list">
+                        <p class="text ${LINE}">${toDo}</p>
                         <div class="buttons">
-                            <button id="check-btn" class="check-btn">
-                                <i class="fa fa-check"></i>
-                            </button>
-                            <button id="delete-btn" class="delete-btn">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>   
+                                <i class="fa ${DONE} co" id="${id}" job="complete"></i>
+                                <i class="fa fa-trash" id="${id}" job="delete"></i>
+                        </div> 
+                    </li>  
                     `;
 
-    
+    const position = "beforeend";
+    lists.insertAdjacentHTML(position, item);
    
 
-const checkBtn = list.querySelector('.check-btn');
-const deleteBtn = list.querySelector('.delete-btn'); 
-deleteBtn.addEventListener('click', deleteItem);
-
- lists.appendChild(list); 
- console.log(list)
 }
 
-   /* function dount(){
-       let list = document.querySelectorAll('.list');
-        list.forEach(function(e) {
-        e.addEventListener('click', () => {
-             e.style.textDecoration = 'line-through';      
-        })  
-    })    
-  
+
+// add item to the list
+document.addEventListener("keyup", function(event){
+    if(event.key == 'Enter'){
+        const toDo = inputBar.value;
+
+        if(toDo){
+            createListItem(toDo, id, false, false);
+            LIST.push({
+                name: toDo,
+                id: id,
+                done: false,
+                trash: false
+            })
+            id++;
+        }
+        inputBar.value = "";
     }
+})
   
- checkBtn.forEach(dount);*
+// check button
+function checkbutton(element){
+
+     element.classList.toggle(CHECK);
+     element.classList.toggle(UNCHECK);
+     element.parentNode.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+     //updat the list
+     LIST[element.id].done = LIST[element.id].done ? false : true; 
+     
+}
+  
+ // remove button
+ function deletebutton(item){
+    item.parentNode.parentNode.parentNode.removeChild(item.parentNode.parentNode);
+    //update the list
+    LIST[item.id].trash = true;
+ }
     
   
+//target the item created dinamically
+lists.addEventListener("click", function(event){
+    const element = event.target;
+    const itemJob = element.attributes.job.value;
 
-
-}
-
- //check button 
-/*function check(e){
-        let list = document.querySelectorAll('.list');
-        list.forEach(function(e) {
-        e.addEventListener('click', () => {
-        e.style.textDecoration = 'line-through'; 
-        console.log(list);
-        })
-    })
-} */
-
-
-//delete button
-
+    if(itemJob == "complete"){
+         checkbutton(element);
+    }else if(itemJob == "delete"){
+        deletebutton(element);
+    }
+})
 
 
 

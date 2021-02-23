@@ -65,24 +65,24 @@ h1 {
   text-align: center;
   align-items: center;
 }
-.list p {
+p.text {
   margin: 0.5rem;
 }
-.delete-btn,
-.check-btn {
-  border: 1px solid #222;
-  width: 30px;
-  height: 30px;
-  color: #fff;
-  font-size: 16px;
+.fa-trash,
+.fa-check-circle {
+  font-size: 32px;
   margin: 1px;
   cursor: pointer;
 }
-.check-btn {
-  background-color: rgb(100, 187, 19);
+.list i.co:hover {
+  cursor: pointer;
 }
-.delete-btn {
-  background-color: rgb(185, 45, 45);
+
+.fa-check-circle {
+  color: rgb(100, 187, 19);
+}
+.fa-trash {
+  color: rgb(185, 45, 45);
 }
 
 /* completed items */
@@ -96,4 +96,9 @@ h1 {
 .fall {
   transform: translateY(4em) scale(0.4) rotate(20deg);
   opacity: 0;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  color: #ccc;
 }
