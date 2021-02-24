@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
 }
 body {
   height: 100vh;
@@ -15,6 +16,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 2rem;
+  font-weight: 300;
 }
 
 .input-section {
@@ -22,14 +24,18 @@ h1 {
   justify-content: center;
   position: relative;
 }
-.input-section input {
-  padding: 0.4rem 3rem;
+input {
+  padding: 0.4rem 4.5rem;
   position: relative;
 }
-.plus-btn i > input {
+.fa-plus {
   position: absolute;
-  font-size: 24px;
-  border: 1px solid #222;
+  font-size: 8px;
+  top: 16%;
+  left: 55%;
+  border: 1px solid #fff;
+  background: rgb(214, 106, 214);
+  color: #fff;
   padding: 5px;
   cursor: pointer;
 }
@@ -39,7 +45,6 @@ h1 {
 
 /* list */
 .list-container {
-  border: 2px solid #fff;
   max-width: 100%;
   height: 100%;
   display: flex;
@@ -47,7 +52,6 @@ h1 {
   margin: 2rem 5rem;
 }
 .lists {
-  border: 2px solid #fff;
   width: 100%;
   margin: 1rem 0;
   align-items: center;
@@ -55,7 +59,7 @@ h1 {
   flex-direction: column;
 }
 .list {
-  width: 60%;
+  width: 50%;
   border: 1px solid #222;
   height: 35px;
   background: #fff;
@@ -66,23 +70,43 @@ h1 {
   align-items: center;
 }
 p.text {
-  margin: 0.5rem;
+  margin: 0.5rem 3rem;
+}
+.buttons {
+  width: 20%;
+  height: 35px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .fa-trash,
 .fa-check-circle {
-  font-size: 32px;
+  font-size: 36px;
   margin: 1px;
   cursor: pointer;
 }
 .list i.co:hover {
   cursor: pointer;
 }
-
+.fa-circle-thin::before {
+  font-size: 16px;
+  border: 1px solid #fff;
+  padding: 5px;
+  background: rgb(100, 187, 19);
+  color: #fff;
+}
 .fa-check-circle {
-  color: rgb(100, 187, 19);
+  color: #fff;
+
+  background: rgb(100, 187, 19);
+  padding: 5px;
+  font-weight: 500;
 }
 .fa-trash {
-  color: rgb(185, 45, 45);
+  color: #fff;
+  border: 1px solid rgb(185, 45, 45);
+  background: rgb(185, 45, 45);
+  padding: 5px;
 }
 
 /* completed items */

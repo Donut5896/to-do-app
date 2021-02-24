@@ -1,47 +1,8 @@
 const inputBar = document.getElementById('inputbar');
 const addBtn = document.querySelector(".plus-btn");
 const lists = document.getElementById('lists');
+const filter = document.getElementById('categories');
 
-
-
-
-
-
-// create lists with delete and check buttons
-/*function addTodo(event){
-    event.preventDefault();
-    // todo li
-    const todoLi = document.createElement('li');
-    todoLi.innerHTML = `<p>${inputBar.value}</p>`;
-    todoLi.classList.add('list');
-    lists.appendChild(todoLi);
-    //if input equals to null
-    if(inputBar.value === ""){
-        return null;
-    }
-    // button div
-    const buttons = document.createElement('div');
-    buttons.classList.add('buttons');
-    
-
-    //check button
-    const checkedButton = document.createElement('button');
-    checkedButton.innerHTML = ` <i class="fa fa-check"></i>`;
-    checkedButton.classList.add('check-btn');
-    buttons.appendChild(checkedButton)
-    
-    //delete button
-    const deleteButton = document.createElement('button');
-    deleteButton.innerHTML = ` <i class="fa fa-trash"></i>`;
-    deleteButton.classList.add('delete-btn');
-    buttons.appendChild(deleteButton); 
-    todoLi.appendChild(buttons);
-
-    //clear todo input bar
-    inputBar.value = "";
-}
-
-*/
 
 
 
@@ -127,9 +88,38 @@ lists.addEventListener("click", function(event){
          checkbutton(element);
     }else if(itemJob == "delete"){
         deletebutton(element);
+        console.log(element);
     }
+    filter.addEventListener('click', filterItem(element));
 })
 
 
 
+//filtering function
+function filterItem(event){
+    const items = lists.childNodes;
+   // const itemsJob = event.target.attributes.job.value;
+
+    for(let i=1; i < items.length; i++){
+        switch(event.target){
+            case "All":
+                items[i].style.display = "flex";
+                break;
+            case "completed":
+            if(items[i].classList.contains('CHECK')){
+                items[i].style.display = "flex";
+            }else{
+                items[i].style.display = "none";
+            }
+            break;
+            case "uncompleted":
+            if(!items[i].classList.contains('fa-trash')){
+                items[i].style.display = "flex";
+            }else{
+                items[i].style.display = "none";
+            }
+            break;
+        }
+    }
+}
 
