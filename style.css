@@ -43,6 +43,11 @@ input {
   margin: 0 1rem;
 }
 
+.item.active {
+  color: yellow;
+  background: blue;
+}
+
 /* list */
 .list-container {
   max-width: 100%;
@@ -58,6 +63,23 @@ input {
   display: flex;
   flex-direction: column;
 }
+
+/*hide list */
+.lists .list.hide {
+  display: none;
+}
+.lists .list.show {
+  animation: animate 0.4s ease;
+}
+@keyframes amimate {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .list {
   width: 50%;
   border: 1px solid #222;
