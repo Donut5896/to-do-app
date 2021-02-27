@@ -165,18 +165,44 @@ filter.addEventListener('click', filterItem);
 
 function filterItem(event){
    // const items = document.querySelectorAll(".list");
-   // const itemsJob = event.target.attributes.job.value;
+   const items = lists.childNodes;
 
-    for(let i=1; i < event.length; i++){
+   items.forEach(function(El) {
+       if(El.nodeName === "LI"){
+            switch(event.target.value){
+                case 'all':
+                    El.style.display = "flex";
+            break;
+
+                case 'completed':
+                if(El.children[0].classList.contains("lineThrough")){
+                    El.style.display = "flex";
+                }else{
+                    El.style.display = "none";
+                }
+                break;
+
+                case "uncompleted":
+                    if(El.children[0].classList.contains("lineThrough")){
+                        El.style.display = "none";
+                    }else{
+                        El.style.display = "flex";
+                    }
+                    break;
+            }
+       }
+   });
+ 
+   /* for(let i=1; i < items.length; i++){
         switch(event.target.value){
             case "all":
                 items[i].style.display = "flex";
                 break;
-            case "completed":
-            if(items[i].classList.contains('fa-check-circle')){
-                items[i].style.display = "flex";
-            }else {
-                items[i].style.display = "none";
+            case "complete":
+            if(items[i].classList.contains('lineThrough')){
+                items[i].style.display.list.li = 'flex';
+            }else{
+                items[i].style.display.list.li = "none";
             }
             break;
             case "uncompleted":
@@ -186,7 +212,9 @@ function filterItem(event){
                 items[i].style.display = "none";
             }
             break;
+           
         }
-    }
+         console.log(items);
+    }*/
 } 
 

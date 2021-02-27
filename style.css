@@ -148,3 +148,6 @@ p.text {
   text-decoration: line-through;
   color: #ccc;
 }
+.fa-circle-thin{
+  display: flex;
+}
