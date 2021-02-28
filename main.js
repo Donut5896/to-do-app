@@ -90,84 +90,19 @@ lists.addEventListener("click", function(event){
   
 })
 
- //filtering function
- 
-/*let item = document.querySelectorAll('option');
-let ul = document.querySelector('select')
-item.forEach(el => {
-    el.addEventListener('click', function(){
-        ul.querySelector('.active').classList.remove('active');
-        el.classList.add('active');
-    })
-})*/
 
 
 
-
-
-
- /*filter.addEventListener("click", function(element){
-        
-    
-    
-
-    item.
-
-
-     if(element.target.option = "item"){
-        //remove and add active class
-      
-        filter.contains("active").remove("active")
-        element.target.classList.add("active"); 
-      
-     
-        
-     }
-   const list = document.querySelectorAll('.list');
-
-    if(element.target.classList.contains("item")){
-        console.log(element);
-        //remove and add active class
-        filter.querySelector(".active").classList.remove("active");
-        element.target.classList.add("active");
-        console.log(element);
-        //get data-name of selected items and store in filtername
-        let filterName = element.target.getAttribute("data-name");
-        list.forEach((li) => {
-
-            //get data name value
-            let filterList = li.getAttribute("data-name");
-            console.log(filterList);
-
-            if( (filterList == filterName) || (filterName == "all")){
-                li.classList.add("show");
-                li.classList.remove("hide");
-            }else{
-                li.classList.add("hide");
-                li.classList.remove("show");
-            }
-        })
-    }*/
-
-
-
-
-
-
-
-
-
-filter.addEventListener('click', filterItem);
-
-
-
+filter.addEventListener('click', filterItem)
 
 
 function filterItem(event){
-   // const items = document.querySelectorAll(".list");
+ 
    const items = lists.childNodes;
 
    items.forEach(function(El) {
+       //make sure the node type is li
+      
        if(El.nodeName === "LI"){
             switch(event.target.value){
                 case 'all':
@@ -175,6 +110,7 @@ function filterItem(event){
             break;
 
                 case 'completed':
+                    //focus on p tag inside li 
                 if(El.children[0].classList.contains("lineThrough")){
                     El.style.display = "flex";
                 }else{
@@ -191,30 +127,33 @@ function filterItem(event){
                     break;
             }
        }
-   });
- 
-   /* for(let i=1; i < items.length; i++){
+   }); 
+
+ // another way using for loop
+   /*for(let i=1; i < items.length; i++){
+       if(items[i].nodeName === "LI"){
         switch(event.target.value){
             case "all":
                 items[i].style.display = "flex";
                 break;
-            case "complete":
-            if(items[i].classList.contains('lineThrough')){
-                items[i].style.display.list.li = 'flex';
-            }else{
-                items[i].style.display.list.li = "none";
-            }
-            break;
-            case "uncompleted":
-            if(!items[i].classList.contains('fa-trash')){
-                items[i].style.display = "flex";
+            case "completed":
+            if(items[i].children[0].classList.contains('lineThrough')){
+                items[i].style.display = 'flex';
             }else{
                 items[i].style.display = "none";
             }
             break;
+            case "uncompleted":
+            if(items[i].children[0].classList.contains('lineThrough')){
+                items[i].style.display = "none";
+            }else{
+                items[i].style.display = "flex";
+            }
+            break;
            
+         }
         }
-         console.log(items);
-    }*/
+         
+    } */
 } 
 
